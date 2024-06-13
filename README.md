@@ -1,4 +1,3 @@
-# fuel-seat
-First repo on github
+# First repo on git
 
 # A prueba ...
