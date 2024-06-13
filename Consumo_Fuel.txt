@@ -1,0 +1,51 @@
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+CREAME [.DBS] una sola TABLA PARA las siguientes 2 AERONAVES por separado EN CUANTO A SU CONSUMO DE FUEL segun su performance de vuelo.
+
+consumo de combustible del B738:
+El valor de 2.5 litros/km es utilizado como valor predeterminado
+agregar los siguientes datos de performance de velocidad en todo el trayecyo de dicha aeronave considerando la distancia recorrida en sus 3 etapas, ascenso, vuelo crucero (recto y nivelado), y descenso:
+1500 pies == 15 FL 
+valores en ascenso: velocidad en nudos (kts), y tasa de ascenso o descenso en pies(ft)/tiempo, hasta los 5000 ft la velocidad es de 165 kts a una tasa de ascenso de 3000 ft/minuto;
+de 5000 ft a 24000 ft asciende a 290 kts y la tasa de ascenso es de 2000 ft/minuto;
+de 240 FL a 380 FL (este es el maximo) asciende a 516 kts y la tasa de ascenso es de 1500 ft/minuto.
+velocidad maxima de crucero: es de 460 kt y puede cubrir una distancia maxima de 3700 km a esta velocidad. aca no existe regimen o tasa de ascenso o descenso porque es vuelo recto y nivelado, no hay variacion del valor de altitud o FL = nivel de vuelo.
+valores en descenso: de 380 FL a 240 FL desciende a 490 kts y el regimen de descenso es de 800 ft/minuto; 
+de 240 FL a 100 FL la velocidad es de 280 kt y el regimen de descenso es de 3500 ft/minuto;
+de 100 FL a 0 ft la velocidad promedio es de 210 kts con un regimen de descenso de 1500 ft/minuto. 
+
+Etapa    AltitudMax    VelocidadKts Tasa Ft/Min     Consumo Fuel Lts/Km
+Ascenso 	5000    	165         3000	                
+Ascenso	    24000	    290 	    2000	                
+Ascenso	    38000	    515 	    1500	                
+Crucero 	38000	    460	            0	        2.5
+Descenso	24000	    490	        - 800           
+Descenso	10000	    280	        -3500           
+Descenso    	0	    210	        -1500                  
+
+necesito el consumo de combustible estimativo para cada etapa previamente figurable en la tabla
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+hacer los mismo para la aeronave Embraer 190 o como su codigo lo indica ,E190 cuenta con los siguientes datos:
+Cálculo del consumo de combustible:
+a un promedio de 460 kt * 170 litros/km = 78,200 litros/h y se incluye una estimación de 2.2 litros/km para el E190.
+
+valores en ascenso: velocidad en nudos (kts), y tasa de ascenso o descenso en pies(ft)/tiempo, hasta los 5000 ft la velocidad es de 165 kts a una tasa de ascenso de 3000 ft/minuto;
+de 0 ft a 5000 ft asciende a 190 kts y la tasa de ascenso es de 3400 ft/minuto;
+de 150 FL a 240 FL asciende a 300 kts y la tasa de ascenso es de 2600 ft/minuto.
+de 240 FL a 410 FL (techo maximo de ascenso) asciende a 490 kts y la tasa de ascenso es de 1800 ft/minuto.
+velocidad maxima de crucero: es de 460 kt y puede cubrir una distancia maxima de 3900 km a esta velocidad.
+valores en descenso: de 410 FL a 240 FL desciende a 490 kts y el regimen de descenso es de 2100 ft/minuto; 
+de 240 FL a 100 FL la velocidad es de 250 kt y el regimen de descenso es de 2200 ft/minuto;
+de 100 FL a 0 ft la velocidad promedio es de 220 kts con un regimen de descenso de 1600 ft/minuto.
+
+Etapa    AltitudMax    VelocidadKts Tasa Ft/Min     Consumo Fuel Lts/Km
+Ascenso 	5000    	165         3000	        
+Ascenso	    15000	    190	        3400    	    
+Ascenso	    24000	    300 	    2600	        
+Ascenso	    41000	    490 	    1800	        
+Crucero 	41000	    460	            0	        2.2
+Descenso	24000	    490	        -2100	        
+Descenso	10000	    250	        -2200	        
+Descenso    	0	    220	        -1600	        
+
+//////////////////////////////////////////////////////////////////////////////////////////////////

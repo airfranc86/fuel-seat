@@ -1,0 +1,16 @@
+CREATE TABLE RutasAereas (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    origen TEXT NOT NULL,
+    destino TEXT NOT NULL,
+    distancia_km REAL NOT NULL
+);
+
+INSERT INTO RutasAereas (origen, destino, distancia_km) VALUES ('COR', 'AEP', 710);
+INSERT INTO RutasAereas (origen, destino, distancia_km) VALUES ('AEP', 'COR', 710);
+INSERT INTO RutasAereas (origen, destino, distancia_km) VALUES ('COR', '', );
+INSERT INTO RutasAereas (origen, destino, distancia_km) VALUES ('', 'COR', );
+INSERT INTO RutasAereas (origen, destino, distancia_km) VALUES ('COR', '', );
+INSERT INTO RutasAereas (origen, destino, distancia_km) VALUES ('', 'COR', );
+INSERT INTO RutasAereas (origen, destino, distancia_km) VALUES ('COR', '', );
+INSERT INTO RutasAereas (origen, destino, distancia_km) VALUES ('', 'COR', );
+-- Agrega más rutas según sea necesario
