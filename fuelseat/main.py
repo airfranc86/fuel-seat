@@ -35,7 +35,7 @@ def main():
         if distancia_km is None:
             return
         
-        # Obtener consumo de combustible (ejemplo)
+        # Obtener consumo de combustible (por km)
         consumo_combustible = 4.5 if aeronave == "B738" else 3.8
         
         # Velocidad de crucero fija para ambas aeronaves (ejemplo)
@@ -59,23 +59,24 @@ def main():
         asientos_no_ocupados = asientos_maximos - pasajeros
         
         # Calcular costo por asientos no ocupados en USD (ejemplo)
-        costo_asientos_no_ocupados = asientos_no_ocupados * consumo_combustible * precio_combustible_por_litro
+        costo_asientos_no_ocupados = asientos_no_ocupados * (consumo_total/asientos_maximos) * precio_combustible_por_litro
+        print("test",asientos_no_ocupados,consumo_total,asientos_maximos,precio_combustible_por_litro)
         
         # Sumar el costo por asientos no ocupados al costo total de combustible
-        costo_combustible_total += costo_asientos_no_ocupados
+        #costo_combustible_total += costo_asientos_no_ocupados
         
         # Asumiendo una ganancia fija por cada asiento ocupado (ejemplo)
         ganancia_por_asiento_ocupado = 50  # Ejemplo de ganancia por asiento ocupado en USD
         ganancia_total_asientos_ocupados = pasajeros * ganancia_por_asiento_ocupado
         
         # Mostrar resultados con unidades y redondeados a dos decimales
-        
+        print("Se asume que el costo total se divide por el número de asientos de la aeronave.")
         print(f"Tiempo de vuelo estimado: {tiempo_vuelo:.2f} horas")
         print(f"Consumo total de combustible: {int(consumo_total)} litros")
         print(f"Costo total de combustible: ${costo_combustible_total:.2f} USD")
-        print(f"Consumo por pasajero: {int(consumo_por_pasajero)} litros/seat")
-        print(f"Costo por asientos no ocupados: ${float(costo_asientos_no_ocupados)} USD")
-        print(f"Ganancia total por asientos ocupados: ${int(ganancia_total_asientos_ocupados)} USD")
+        print(f"Consumo por pasajero: {int(consumo_por_pasajero)} litros/asiento")
+        print(f"Gastos por asientos no ocupados: ${float(costo_asientos_no_ocupados)} USD")
+        print(f"Ingresos por asientos ocupados: ${int(ganancia_total_asientos_ocupados)} USD")
 
         # Esperar la entrada del usuario para salir
         input("Presiona Enter para salir...")
