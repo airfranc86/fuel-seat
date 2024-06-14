@@ -29,10 +29,6 @@ def main():
         if aeronave is None:
             return
         
-        # Convertir origen y destino a mayúsculas
-        origen = origen.upper()
-        destino = destino.upper()
-        
         # Obtener distancia de vuelo desde la base de datos
         distancia_km = obtener_distancia_vuelo(origen, destino)
         
