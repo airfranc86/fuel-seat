@@ -24,7 +24,7 @@ if module_path not in sys.path:
 def main():
     try:
         # Obtener datos del usuario y seleccionar la aeronave
-        aeronave, pasajeros, origen, destino, velocidad_viento, altitud_crucero = obtener_datos_usuario()
+        aeronave, pasajeros, origen, destino = obtener_datos_usuario()
         
         if aeronave is None:
             return

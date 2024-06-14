@@ -1,10 +1,18 @@
 import sqlite3
+import os
 
 # Función para conectar a la base de datos de rutas aéreas
 def conectar_base_datos_rutas():
     try:
-        #conexion = sqlite3.connect(r"E:\repogit\pydev_projects\RutasAereasCOR.db")
-        conexion = sqlite3.connect(r"../RutasAereasCOR.db")
+        # Ubicación de este archivo
+        directorio_script = os.path.dirname(os.path.abspath(__file__))
+
+        # Ruta relativa hacia la base de datos
+        ruta_base_datos = os.path.join(directorio_script, "datos/RutasAereasCOR.db")
+
+        # Conexión a la base de datos
+        conexion = sqlite3.connect(ruta_base_datos)
+
         return conexion
     except Exception as e:
         print(f"Error al conectar a la base de datos de rutas aéreas: {e}")
@@ -67,10 +75,8 @@ def obtener_datos_usuario():
         pasajeros = int(input("Ingrese la cantidad de pasajeros a bordo: "))
         origen = input("Ingrese el código IATA del aeropuerto de origen (e.g., COR): ").strip().upper()
         destino = input("Ingrese el código IATA del aeropuerto de destino (e.g., AEP): ").strip().upper()
-        velocidad_viento = float(input("Ingrese la velocidad del viento en nudos (kts): "))
-        altitud_crucero = int(input("Ingrese la altitud de crucero (FL): "))
         
-        return aeronave, pasajeros, origen, destino, velocidad_viento, altitud_crucero
+        return aeronave, pasajeros, origen, destino
     
     except ValueError as e:
         print(f"Error: {e}")
