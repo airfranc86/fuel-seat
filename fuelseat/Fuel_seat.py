@@ -127,3 +127,22 @@ def calcular_costo_combustible(consumo_total, precio_combustible_por_litro):
 def calcular_consumo_por_pasajero(consumo_total, pasajeros):
     consumo_por_pasajero = consumo_total / pasajeros
     return consumo_por_pasajero
+
+def imprimir_resultados(diccionario):
+    # Definir las frases correspondientes a cada clave
+    frases = {
+        'tiempo vuelo': 'Tiempo de vuelo estimado: {:.2f} horas',
+        'consumo total': 'Consumo total de combustible: {:.1f} litros',
+        'costo combustible total': 'Costo total de combustible: {:.2f} USD',
+        'consumo por pasajero': 'Consumo por pasajero: {:.1f} litros/asiento',
+        'costo asientos no ocupados': 'Gastos por asientos no ocupados: {:.2f} USD',
+        'ganancia total asientos ocupados': 'Ingresos por asientos ocupados: {:.1f} USD'
+    }
+
+    print("Se asume que el costo total se divide por el número de asientos de la aeronave.")
+    # Iterar sobre las claves y valores del diccionario
+    for clave, valor in diccionario.items():
+        # Verificar si la clave tiene una frase asociada y el valor no es None
+        if clave in frases and valor is not None:
+            # Imprimir la frase formateada con el valor
+            print(frases[clave].format(valor))

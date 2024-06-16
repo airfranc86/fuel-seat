@@ -12,7 +12,7 @@ from Fuel_seat import calcular_tiempo_vuelo
 from Fuel_seat import calcular_consumo_total
 from Fuel_seat import calcular_costo_combustible
 from Fuel_seat import calcular_consumo_por_pasajero
-
+from Fuel_seat import imprimir_resultados
 
 
 module_path = os.path.abspath(os.path.join(".."))
@@ -70,13 +70,17 @@ def main():
         ganancia_total_asientos_ocupados = pasajeros * ganancia_por_asiento_ocupado
         
         # Mostrar resultados con unidades y redondeados a dos decimales
-        print("Se asume que el costo total se divide por el número de asientos de la aeronave.")
-        print(f"Tiempo de vuelo estimado: {tiempo_vuelo:.2f} horas")
-        print(f"Consumo total de combustible: {int(consumo_total)} litros")
-        print(f"Costo total de combustible: ${costo_combustible_total:.2f} USD")
-        print(f"Consumo por pasajero: {int(consumo_por_pasajero)} litros/asiento")
-        print(f"Gastos por asientos no ocupados: ${float(costo_asientos_no_ocupados)} USD")
-        print(f"Ingresos por asientos ocupados: ${int(ganancia_total_asientos_ocupados)} USD")
+        resultados_dict = {
+             'tiempo vuelo' : tiempo_vuelo,
+             'consumo total'   : consumo_total,
+             'costo combustible total': costo_combustible_total,
+             'consumo por pasajero': consumo_por_pasajero,
+             'costo asientos no ocupados': costo_asientos_no_ocupados,
+             'ganancia total asientos ocupados'  : ganancia_total_asientos_ocupados
+        }
+
+        imprimir_resultados(resultados_dict)
+
 
         # Esperar la entrada del usuario para salir
         input("Presiona Enter para salir...")
@@ -91,8 +95,7 @@ def main():
 if __name__ == "__main__":
     main()
 
-                #//////////////////////////////////////////////////////////////////////////////////#
+#//////////////////////////////////////////////////////////////////////////////////#
 # Pendiente de agregar al programa que el usuario al agregar el valor del viento en kts afecte al tiempo de recorrido de la aeronave
 # No está funcionando la lectura de la base de datos porque al ingresar el usuario el techo o nivel de vuelo eso tambien afecta al tiempo de recorrido de dicha aeronave
-                #//////////////////////////////////////////////////////////////////////////////////#
-                                # DADO POR FINALIZADO HASTA LA CORRECION #
+#//////////////////////////////////////////////////////////////////////////////////#
