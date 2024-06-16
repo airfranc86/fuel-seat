@@ -3,11 +3,8 @@ import sys
 import os
 
 
-from Fuel_seat import conectar_base_datos_rutas
-from Fuel_seat import verificar_y_crear_tabla_rutas_aereas
 from Fuel_seat import obtener_distancia_vuelo
 from Fuel_seat import obtener_datos_usuario
-from Fuel_seat import obtener_datos_consumo_combustible
 from Fuel_seat import calcular_tiempo_vuelo
 from Fuel_seat import calcular_consumo_total
 from Fuel_seat import calcular_costo_combustible
@@ -60,7 +57,6 @@ def main():
         
         # Calcular costo por asientos no ocupados en USD (ejemplo)
         costo_asientos_no_ocupados = asientos_no_ocupados * (consumo_total/asientos_maximos) * precio_combustible_por_litro
-        print("test",asientos_no_ocupados,consumo_total,asientos_maximos,precio_combustible_por_litro)
         
         # Sumar el costo por asientos no ocupados al costo total de combustible
         #costo_combustible_total += costo_asientos_no_ocupados

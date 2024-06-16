@@ -1,43 +1,4 @@
-import sqlite3
-import os
-
-# Función para conectar a la base de datos de rutas aéreas
-def conectar_base_datos_rutas():
-    try:
-        # Ubicación de este archivo
-        directorio_script = os.path.dirname(os.path.abspath(__file__))
-
-        # Ruta relativa hacia la base de datos
-        ruta_base_datos = os.path.join(directorio_script, "datos/RutasAereasCOR.db")
-
-        # Conexión a la base de datos
-        conexion = sqlite3.connect(ruta_base_datos)
-
-        return conexion
-    except Exception as e:
-        print(f"Error al conectar a la base de datos de rutas aéreas: {e}")
-        return None
-
-# Función para verificar y crear la tabla RutasAereas si no existe
-def verificar_y_crear_tabla_rutas_aereas(conexion):
-    try:
-        cursor = conexion.cursor()
-        cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='RutasAereas';")
-        tabla_existe = cursor.fetchone()
-        
-        if not tabla_existe:
-            cursor.execute('''CREATE TABLE RutasAereas (
-                                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                                origen TEXT NOT NULL,
-                                destino TEXT NOT NULL,
-                                distancia_km REAL NOT NULL
-                              );''')
-            cursor.execute("INSERT INTO RutasAereas (origen, destino, distancia_km) VALUES ('COR', 'AEP', 710)")
-            cursor.execute("INSERT INTO RutasAereas (origen, destino, distancia_km) VALUES ('AEP', 'COR', 710)")
-            conexion.commit()
-    
-    except Exception as e:
-        print(f"Error al verificar o crear la tabla RutasAereas: {e}")
+from bases_datos import conectar_base_datos_rutas
 
 # Función para obtener la distancia de vuelo desde la base de datos de rutas aéreas
 def obtener_distancia_vuelo(origen, destino):
@@ -83,29 +44,29 @@ def obtener_datos_usuario():
         return None, None, None, None, None, None
 
 # Función para obtener los datos de consumo de combustible según la aeronave y fase del vuelo
-def obtener_datos_consumo_combustible(aeronave, fase_vuelo):
-    try:
-        conexion = conectar_base_datos()
-        cursor = conexion.cursor()
-        
-        # Escoger la tabla adecuada según la aeronave
-        tabla_consumo = f"Consumo_Fuel{aeronave}"
-        
-        # Consultar los valores de consumo para la fase de vuelo especificada
-        cursor.execute(f"SELECT {fase_vuelo} FROM {tabla_consumo}")
-        resultado = cursor.fetchone()
-        
-        conexion.close()
-        
-        if resultado:
-            return resultado[0]
-        else:
-            print(f"No se encontraron datos para {aeronave} en la fase de vuelo {fase_vuelo}.")
-            return None
-        
-    except Exception as e:
-        print(f"Error al obtener datos de consumo de combustible: {e}")
-        return None
+#def obtener_datos_consumo_combustible(aeronave, fase_vuelo):
+#    try:
+#        conexion = conectar_base_datos()
+#        cursor = conexion.cursor()
+#        
+#        # Escoger la tabla adecuada según la aeronave
+#        tabla_consumo = f"Consumo_Fuel{aeronave}"
+#        
+#        # Consultar los valores de consumo para la fase de vuelo especificada
+#        cursor.execute(f"SELECT {fase_vuelo} FROM {tabla_consumo}")
+#        resultado = cursor.fetchone()
+#        
+#        conexion.close()
+#        
+#        if resultado:
+#            return resultado[0]
+#        else:
+#            print(f"No se encontraron datos para {aeronave} en la fase de vuelo {fase_vuelo}.")
+#            return None
+#        
+#    except Exception as e:
+#        print(f"Error al obtener datos de consumo de combustible: {e}")
+#        return None
 
 
 # Función para calcular el tiempo de vuelo en horas
